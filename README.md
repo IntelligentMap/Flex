@@ -1,2 +1,2 @@
-# FlexMap
+# Flex
 Frontend for IntelligentMap
