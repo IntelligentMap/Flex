@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Cartographer from '../../assets/cartographer.js';
+import * as Cartographer from '../../assets/Cartographer/dist/cartographer.js';
 
 @Component({
   selector: 'app-map',
@@ -12,14 +12,13 @@ export class MapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    var map = Cartographer.map('map', { zoomControl: false }).setView([51.505, -0.09], 13);
+    let map = Cartographer.map('map', {
+      zoomControl: false,
+      preferCanvas: true
+    }).setView([53.902262, 27.561840], 7);
 
     Cartographer.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    Cartographer.control.zoom({
-      position:'bottomright'
     }).addTo(map);
   }
 

@@ -29,9 +29,7 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": [
-              "src/assets/cartographer.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
