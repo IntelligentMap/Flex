@@ -19,7 +19,7 @@ after_success:
 - "[[ $TRAVIS_PULL_REQUEST != 'false' ]] && NAME=$TRAVIS_PULL_REQUEST"
 - "[[ -n $TRAVIS_TAG ]] && NAME=$TRAVIS_TAG"
 - curl -i -X POST -F "branch=$TRAVIS_BRANCH" -F "commit=$TRAVIS_COMMIT" -F "key=$OCBLOBS_KEY"
-  -F 'upfile=@dist/flex.zip' https://flex.blobs.oopscommand.com/upload.php
+  -F 'upfile=@dist/flex.zip' https://blobs.oopscommand.com/flex/upload.php
 env:
   global:
     secure: Od0GfblDlmV4OKhUE+JUi/KF0FJt8NJK1Vl5jp0FizC3GImRLhG70f+9/pe30ChmPi+AGpMnKvc9Q3FY91Rn5gkIgarBSRm/QBlK/YdA3pRiOHlNlAQdn6kt2ztOmtlFOTQfUYqQqwN4QgsbLxDMaN3iCsnSUrkx1kZfE318tBD+rmtPDAMF1lqBACMlwUhwMLkDLzqOW9OkThdOQUnT9HJ0hkrODyJhTuE195t6T9oaVWxmbMD7i7qLps6ov5TLRARHstyhpGuRRLiNrLVsHw7b6kRBrvHNMgKEqugO9Chhw09M9ysQ1E/o+p5qjkJoTURk0xoJ1KPX4scsgaN8O+deV1KB4noKZcPXjw3Wk5vIG6H7QjZM35sjnQWOIV8seW26lUy46DPHYbGtYP+ip8ez+KFPyhVVC1gS09iHRUEjQ7iZfK/vuqFBD/nS9syAH6/z5+N4YRLNKvw6kFSdS53nX2GpaGH6Cih8PInqntmsOm7aC3Z+TwJMixYknv6Pu6ibtJwa8d/DJbpxQRknmNg4dcljRY9upwBj7/Iodkv7L9uawyg24kJD+jUnpOTjcP/QewRamHROK79rbikol0poV0VJ/5i/WG4JHNbsxCSTOVf9wqf9VlUNK3H0VBqASkQqc98A0snW1AGhnuwAwfbnxUixYSDyzGkw3Q3ZgGI=
