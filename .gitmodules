@@ -1,0 +1,3 @@
+[submodule "src/assets/Cartographer"]
+	path = src/assets/Cartographer
+	url = https://github.com/IntelligentMap/Cartographer
