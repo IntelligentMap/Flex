@@ -1,23 +1,17 @@
 sudo: false
 language: node_js
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 addons:
   chrome: stable
-
 node_js:
-  - node
-
+- node
 script:
-  - npm run lint
-  - npm run test:headless
-  - npm run build
-  - xvfb-run npm run e2e
-
-
+- npm run lint
+- npm run test:headless
+- npm run build
+- xvfb-run npm run e2e
 after_success:
 - npm run build
 - cd dist && zip -x .DS_Store -r flex.zip . && cd ..
@@ -28,4 +22,4 @@ after_success:
   -F 'upfile=@dist/flex.zip' https://flex.blobs.oopscommand.com/upload.php
 env:
   global:
-    secure: MsaqYn/eAFaaREC7vh90F1S6of94uZ8ZG1F00GA59FJDK68Va3vunOHCY2Czh/z1UxiAgsyTpwzFxHvPU5MzVRt/EBv8itgq8IP2/33U+rO9Q/zlnOPFWB7/hrljG6M5sjyKCXfddA3xntYi7Pnp9pDaL3x2EIG9J9LlweHFOOGVD2V2gr4WMm0gxC1R+Fc71cxGUTBIT84d16M+0b2/ldLfVKi7wMhIoZLQ/gHQfvTZXUe6SmY3YkJreZ9FyUZ5Z8mk8D8XibDfGG9oIA1eJOldQUWiYiCfvs+P6TeM3h8xio7z6SNSKmN/ZPnIZNTvs1gWoUGQ2RF9zpXcj12hqgb+bOYKjR7kgQ7HbYTc5/N+4gNP+pAE5ac6f5W7CacBA5jxQ9A9RnZFEz88JgtUYKSTt5rXVLY78EKtP8OGt6bxsgHrW0XyS7bALYV8pdUGi37t+yjWOE9+UqxVpkzfSYItaNYvXSJ9svlm68vQv2ENFILBYHyEAv8zlkpBKx4oCI08TsAi1oHJGSWPU+GsSVC8OrRt1iRKDX96Uf6ZNf4/zJtaQh7UWX8N4s+hqODEDDk27cs8LsMMqW5yWuNn7o4MSIIuCNDSG8EHS825lUGvTsT7F1GasrE1r6Iy1KzcFF6fhCuDkQ7bhrlhb9UvnJPQ97CdQjiHTOLoZJXQcPw=
+    secure: Od0GfblDlmV4OKhUE+JUi/KF0FJt8NJK1Vl5jp0FizC3GImRLhG70f+9/pe30ChmPi+AGpMnKvc9Q3FY91Rn5gkIgarBSRm/QBlK/YdA3pRiOHlNlAQdn6kt2ztOmtlFOTQfUYqQqwN4QgsbLxDMaN3iCsnSUrkx1kZfE318tBD+rmtPDAMF1lqBACMlwUhwMLkDLzqOW9OkThdOQUnT9HJ0hkrODyJhTuE195t6T9oaVWxmbMD7i7qLps6ov5TLRARHstyhpGuRRLiNrLVsHw7b6kRBrvHNMgKEqugO9Chhw09M9ysQ1E/o+p5qjkJoTURk0xoJ1KPX4scsgaN8O+deV1KB4noKZcPXjw3Wk5vIG6H7QjZM35sjnQWOIV8seW26lUy46DPHYbGtYP+ip8ez+KFPyhVVC1gS09iHRUEjQ7iZfK/vuqFBD/nS9syAH6/z5+N4YRLNKvw6kFSdS53nX2GpaGH6Cih8PInqntmsOm7aC3Z+TwJMixYknv6Pu6ibtJwa8d/DJbpxQRknmNg4dcljRY9upwBj7/Iodkv7L9uawyg24kJD+jUnpOTjcP/QewRamHROK79rbikol0poV0VJ/5i/WG4JHNbsxCSTOVf9wqf9VlUNK3H0VBqASkQqc98A0snW1AGhnuwAwfbnxUixYSDyzGkw3Q3ZgGI=
