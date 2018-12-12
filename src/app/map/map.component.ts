@@ -12,7 +12,7 @@ export class MapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let map = Cartographer.map('map', {
+    const map = Cartographer.map('map', {
       zoomControl: false,
       preferCanvas: true
     }).setView([53.902262, 27.561840], 7);
