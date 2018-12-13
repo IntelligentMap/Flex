@@ -1,6 +1,7 @@
 @import "../../assets/theme/colors"
 
 $common-border-radius: 4px
+$common-header-color: #f1f1f1
 
 .page-header
   position: fixed
@@ -13,7 +14,7 @@ $common-border-radius: 4px
 
 .page-header a
   float: left
-  background-color: #f1f1f1
+  background-color: $common-header-color
   color: black
   text-align: center
   padding: 10px
@@ -40,14 +41,13 @@ $common-border-radius: 4px
 .page-header-right
   float: right
   border-radius: $common-border-radius
-  background-color: #f1f1f1
+  background-color: $common-header-color
 
 @media screen and (max-width: 500px)
   .page-header a
     float: none
     display: block
     text-align: left
-  .header-right
-    float: none
+    background-color: $common-header-color
 
 
