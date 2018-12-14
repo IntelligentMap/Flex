@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { MapComponent } from './map/map.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageHeaderComponent,
     MapComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
