@@ -8,7 +8,7 @@ addons:
 node_js:
 - node
 script:
-- cd src/assets/Cartographer && npm install && npm run build && cd ../../..
+- cd src/Cartographer && npm install && npm run build && cd ../..
 - npm run build
 after_success:
 - npm run build
