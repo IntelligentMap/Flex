@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Cartographer from '../../assets/Cartographer/dist/cartographer.js';
+import * as Cartographer from '../../Cartographer/dist/cartographer.js';
 
 @Component({
   selector: 'app-map',
