@@ -14,8 +14,12 @@ export class MapComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    let lat;
-    let lng;
+    let lat = 53.902262;
+    let lng = 27.561840;
+
+    this.map = Cartographer.map('map', {
+      zoomControl: false
+    })
 
     this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
       .on('locationfound', function(e){
@@ -24,13 +28,9 @@ export class MapComponent implements OnInit, OnDestroy {
       })
       .on('locationerror', function(e){
         console.log(e);
-        lat = 53.902262;
-        lng = 27.561840;
       });
 
-    this.map = Cartographer.map('map', {
-      zoomControl: false
-    }).setView([lat, lng], 7);
+    this.map.setView([lat, lng], 14);
 
     Cartographer.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
