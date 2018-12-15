@@ -49,7 +49,10 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    localStorage.setItem("app-map-state", this.map)
+    const center = this.map.getCenter();
+
+    localStorage.setItem("app-map-state-lat", center.lat);
+    localStorage.setItem("app-map-state-lng", center.lng);
   }
 
 }
