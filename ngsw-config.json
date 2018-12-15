@@ -21,6 +21,28 @@
           "/assets/**"
         ]
       }
+    },
+    {
+      "name": "tiles",
+      "resources": {
+        "files": [
+          "https://*.tile.openstreetmap.org/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": [
+        "/api/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "3d",
+        "timeout": "10s"
+      }
     }
   ]
 }
