@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
       zoomControl: false
     }).setView([53.902262, 27.561840], 7);
 
-    Cartographer.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    Cartographer.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
