@@ -20,9 +20,11 @@ export class MapComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    Cartographer.control.zoom({
-      position:'bottomright'
-    }).addTo(map);
+    if (!Cartographer.Browser.mobile) {
+      Cartographer.control.zoom({
+        position:'bottomright'
+      }).addTo(map);
+    }
   }
 
 }
