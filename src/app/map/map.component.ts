@@ -14,16 +14,19 @@ export class MapComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    var lat = 53.902262;
-    var lng = 27.561840;
+    let lat;
+    let lng;
 
-    if(localStorage.getItem("app-map-coords-lat")) {
-      lat = parseFloat(localStorage.getItem("app-map-coords-lat"));
-    }
-
-    if(localStorage.getItem("app-map-coords-lng")) {
-      lng = parseFloat(localStorage.getItem("app-map-coords-lng"));
-    }
+    this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
+      .on('locationfound', function(e){
+        lat = e.latitude;
+        lng = e.longitude;
+      })
+      .on('locationerror', function(e){
+        console.log(e);
+        lat = 53.902262;
+        lng = 27.561840;
+      });
 
     this.map = Cartographer.map('map', {
       zoomControl: false
@@ -39,15 +42,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
-      .on('locationfound', function(e){
-        localStorage.setItem("app-map-coords-lat", e.latitude);
-        localStorage.setItem("app-map-coords-lng", e.longitude);
-      })
-      .on('locationerror', function(e){
-        console.log(e);
-        alert("Location access denied.");
-      });
+    localStorage.setItem("app-map-state", this.map)
   }
 
 }
