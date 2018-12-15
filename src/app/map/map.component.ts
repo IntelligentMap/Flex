@@ -16,7 +16,7 @@ export class MapComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let lat = 53.902262;
     let lng = 27.561840;
-    let zoom = 7;
+    let zoom = 11;
 
     this.map = Cartographer.map('map', {
       zoomControl: false

@@ -9,9 +9,8 @@ node_js:
 - node
 script:
 - cd src/Cartographer && npm install && npm run build && cd ../..
-- npm run build
-after_success:
 - npm run prod
+after_success:
 - cd dist && zip -x .DS_Store -r flex.zip . && cd ..
 - NAME=$TRAVIS_BRANCH
 - "[[ $TRAVIS_PULL_REQUEST != 'false' ]] && NAME=$TRAVIS_PULL_REQUEST"
