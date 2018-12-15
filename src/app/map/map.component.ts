@@ -21,22 +21,21 @@ export class MapComponent implements OnInit, OnDestroy {
       zoomControl: false
     });
 
-    this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
-      .on('locationfound', function(e){
-        if(localStorage.getItem("app-map-state-lat") == null) {
-          localStorage.setItem("app-map-state-lat", e.latitude)
-        }
-
-        if(localStorage.getItem("app-map-state-lng") == null) {
-          localStorage.setItem("app-map-state-lng", e.longitude)
-        }
-
-        lat = parseFloat(localStorage.getItem("app-map-state-lat"));
-        lng = parseFloat(localStorage.getItem("app-map-state-lng"));
-      })
-      .on('locationerror', function(e){
-        console.log(e);
-      });
+    if(localStorage.getItem("app-map-state-lat") == null || localStorage.getItem("app-map-state-lng") == null) {
+      this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
+        .on('locationfound', function (e) {
+          localStorage.setItem("app-map-state-lat", e.latitude);
+          localStorage.setItem("app-map-state-lng", e.longitude);
+          lat = parseFloat(localStorage.getItem("app-map-state-lat"));
+          lng = parseFloat(localStorage.getItem("app-map-state-lng"));
+        })
+        .on('locationerror', function (e) {
+          console.log(e);
+        });
+    } else {
+      lat = parseFloat(localStorage.getItem("app-map-state-lat"));
+      lng = parseFloat(localStorage.getItem("app-map-state-lng"));
+    }
 
     this.map.setView([lat, lng], 14);
 
