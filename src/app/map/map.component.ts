@@ -14,25 +14,20 @@ export class MapComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    var x = 53.902262;
-    var y = 27.561840;
-    var z = 7;
+    var lat = 53.902262;
+    var lng = 27.561840;
 
-    if(localStorage.getItem("app-map-coords-x")) {
-      x = parseFloat(localStorage.getItem("app-map-coords-x"));
+    if(localStorage.getItem("app-map-coords-lat")) {
+      lat = parseFloat(localStorage.getItem("app-map-coords-lat"));
     }
 
-    if(localStorage.getItem("app-map-coords-y")) {
-      y = parseFloat(localStorage.getItem("app-map-coords-y"));
-    }
-
-    if(localStorage.getItem("app-map-coords-z")) {
-      z = parseFloat(localStorage.getItem("app-map-coords-z"));
+    if(localStorage.getItem("app-map-coords-lng")) {
+      lng = parseFloat(localStorage.getItem("app-map-coords-lng"));
     }
 
     this.map = Cartographer.map('map', {
       zoomControl: false
-    }).setView([x, y], z);
+    }).setView([lat, lng], 7);
 
     Cartographer.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -44,10 +39,15 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    const coords = this.map.getCenter();
-    localStorage.setItem("app-map-coords-x", coords.x);
-    localStorage.setItem("app-map-coords-y", coords.y);
-    localStorage.setItem("app-map-coords-z", coords.z);
+    this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
+      .on('locationfound', function(e){
+        localStorage.setItem("app-map-coords-lat", e.latitude);
+        localStorage.setItem("app-map-coords-lng", e.longitude);
+      })
+      .on('locationerror', function(e){
+        console.log(e);
+        alert("Location access denied.");
+      });
   }
 
 }
