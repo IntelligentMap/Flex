@@ -21,14 +21,6 @@
           "/assets/**"
         ]
       }
-    },
-    {
-      "name": "tiles",
-      "resources": {
-        "files": [
-          "https://tile.openstreetmap.org/**"
-        ]
-      }
     }
   ],
   "dataGroups": [
