@@ -16,6 +16,7 @@ export class MapComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let lat = 53.902262;
     let lng = 27.561840;
+    let zoom = 7;
 
     this.map = Cartographer.map('map', {
       zoomControl: false
@@ -37,7 +38,11 @@ export class MapComponent implements OnInit, OnDestroy {
       lng = parseFloat(localStorage.getItem("app-map-state-lng"));
     }
 
-    this.map.setView([lat, lng], 14);
+    if(!(localStorage.getItem("app-map-state-zoom") == null)) {
+      zoom = parseInt(localStorage.getItem("app-map-state-zoom"));
+    }
+
+    this.map.setView([lat, lng], zoom);
 
     Cartographer.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -50,9 +55,11 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     const center = this.map.getCenter();
+    const zoom = this.map.getZoom();
 
     localStorage.setItem("app-map-state-lat", center.lat);
     localStorage.setItem("app-map-state-lng", center.lng);
+    localStorage.setItem("app-map-state-zoom", zoom);
   }
 
 }
