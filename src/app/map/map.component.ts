@@ -19,12 +19,20 @@ export class MapComponent implements OnInit, OnDestroy {
 
     this.map = Cartographer.map('map', {
       zoomControl: false
-    })
+    });
 
     this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
       .on('locationfound', function(e){
-        lat = e.latitude;
-        lng = e.longitude;
+        if(localStorage.getItem("app-map-state-lat") == null) {
+          localStorage.setItem("app-map-state-lat", e.latitude)
+        }
+
+        if(localStorage.getItem("app-map-state-lng") == null) {
+          localStorage.setItem("app-map-state-lng", e.longitude)
+        }
+
+        lat = parseFloat(localStorage.getItem("app-map-state-lat"));
+        lng = parseFloat(localStorage.getItem("app-map-state-lng"));
       })
       .on('locationerror', function(e){
         console.log(e);
