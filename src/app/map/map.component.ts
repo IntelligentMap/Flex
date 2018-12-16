@@ -55,13 +55,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.on('moveend', function (e) {
       MapComponent.saveMapState(this.map);
     });
-    this.map.on('move', function (e) {
-      MapComponent.saveMapState(this.map);
-    });
     this.map.on('zoomend', function (e) {
-      MapComponent.saveMapState(this.map);
-    });
-    this.map.on('zoom', function (e) {
       MapComponent.saveMapState(this.map);
     });
   }
