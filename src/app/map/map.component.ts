@@ -9,7 +9,9 @@ import * as Cartographer from '../../Cartographer/dist/cartographer.js';
 
 export class MapComponent implements OnInit, OnDestroy {
 
-  map;
+  map = Cartographer.map('map', {
+    zoomControl: false
+  });
 
   constructor() { }
 
@@ -17,10 +19,6 @@ export class MapComponent implements OnInit, OnDestroy {
     let lat = 53.902262;
     let lng = 27.561840;
     let zoom = 11;
-
-    this.map = Cartographer.map('map', {
-      zoomControl: false
-    });
 
     if(localStorage.getItem("app-map-state-lat") == null || localStorage.getItem("app-map-state-lng") == null) {
       this.map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
@@ -53,10 +51,10 @@ export class MapComponent implements OnInit, OnDestroy {
     }).addTo(this.map);
 
     this.map.on('moveend', function (e) {
-      MapComponent.saveMapState(this.map);
+      MapComponent.saveMapState(e);
     });
     this.map.on('zoomend', function (e) {
-      MapComponent.saveMapState(this.map);
+      MapComponent.saveMapState(e);
     });
   }
 
