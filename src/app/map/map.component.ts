@@ -52,19 +52,27 @@ export class MapComponent implements OnInit, OnDestroy {
       position:'bottomright'
     }).addTo(this.map);
 
-    this.map.on('moveend', this.saveMapState);
-    this.map.on('move', this.saveMapState);
-    this.map.on('zoomend', this.saveMapState);
-    this.map.on('zoom', this.saveMapState);
+    this.map.on('moveend', function (e) {
+      MapComponent.saveMapState(this.map);
+    });
+    this.map.on('move', function (e) {
+      MapComponent.saveMapState(this.map);
+    });
+    this.map.on('zoomend', function (e) {
+      MapComponent.saveMapState(this.map);
+    });
+    this.map.on('zoom', function (e) {
+      MapComponent.saveMapState(this.map);
+    });
   }
 
   ngOnDestroy(): void {
-    this.saveMapState(null);
+    MapComponent.saveMapState(this.map);
   }
 
-  saveMapState(e) {
-    const center = this.map.getCenter();
-    const zoom = this.map.getZoom();
+  static saveMapState(myMap) {
+    const center = myMap.getCenter();
+    const zoom = myMap.getZoom();
 
     localStorage.setItem("app-map-state-lat", center.lat);
     localStorage.setItem("app-map-state-lng", center.lng);
