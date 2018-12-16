@@ -50,6 +50,35 @@ $common-header-color: white
   //border-radius: $common-border-radius
   //background-color: $common-header-color
 
+$search_size: 2.75em
+
+#search-box
+  background-color: white
+
+#search-input
+  outline: none
+  padding: 10px
+  font-size: 17px
+  border: none
+  border-radius: 4px 0px 0px 4px
+  float: left
+  width: 80%
+  height: $search_size
+  background: #f1f1f1
+
+#search-button
+  outline: none
+  float: left
+  width: $search_size
+  height: $search_size
+  padding: 10px
+  background: map-get($colors, 'primary')
+  color: white
+  font-size: 17px
+  border-radius: 0px 4px 4px 0px
+  cursor: pointer
+
+
 @media screen and (max-width: 500px)
   .page-header
     background-color: $common-header-color
