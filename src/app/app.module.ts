@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BlogComponent } from './blog/blog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { environment } from '../environments/environment';
     PageHeaderComponent,
     MapComponent,
     PageNotFoundComponent,
-    BlogComponent
+    BlogComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
