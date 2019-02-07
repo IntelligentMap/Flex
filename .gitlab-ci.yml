@@ -1,0 +1,41 @@
+image: node:11.7.0
+
+variables:
+    GIT_SUBMODULE_STRATEGY:         recursive
+
+cache:
+  paths:
+    - node_modules/
+    - src/Cartographer/
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  before_script:
+    # Make Git submodules work
+    - which git || (apk --no-cache add git)
+    - git submodule sync --recursive
+    - git submodule update  --remote --recursive
+  script:
+    - cd src/Cartographer && npm install && npm run build && cd ../..
+    - npm install
+    - npm run build
+  tags:
+    - docker
+    
+deploy:
+  stage: deploy
+  before_script:
+    # Make Git submodules work
+    - which git || (apk --no-cache add git)
+    - git submodule sync --recursive
+    - git submodule update  --remote --recursive
+  script:
+    - cd src/Cartographer && npm install && npm run build && cd ../..
+    - npm install
+    - npm run prod
+  tags:
+    - docker
