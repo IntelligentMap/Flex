@@ -27,7 +27,14 @@ build:
     
 deploy:
   stage: deploy
+  before_script:
+    # Make Git submodules work
+    - which git || (apk --no-cache add git)
+    - git submodule sync --recursive
+    - git submodule update  --remote --recursive
   script:
+    - cd src/Cartographer && npm install && npm run build && cd ../..
+    - npm install
     - npm run prod
   tags:
     - docker
