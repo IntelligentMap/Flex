@@ -1,0 +1,25 @@
+image: node:11.7.0
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - cd src/Cartographer && npm install && npm run build && cd ../..
+    - npm install
+    - npm run build
+  tags:
+    - docker
+    
+deploy:
+  stage: deploy
+  script:
+    - npm run prod
+  tags:
+    - docker
