@@ -6,6 +6,7 @@ variables:
 cache:
   paths:
     - node_modules/
+    - src/Cartographer/
 
 stages:
   - build
