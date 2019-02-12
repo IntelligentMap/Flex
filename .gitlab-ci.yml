@@ -6,7 +6,6 @@ variables:
 cache:
   paths:
     - node_modules/
-    - src/Cartographer/
 
 stages:
   - build
@@ -14,13 +13,7 @@ stages:
 
 build:
   stage: build
-  before_script:
-    # Make Git submodules work
-    - which git || (apk --no-cache add git)
-    - git submodule sync --recursive
-    - git submodule update  --remote --recursive
   script:
-    - cd src/Cartographer && npm install && npm run build && cd ../..
     - npm install
     - npm run build
   tags:
