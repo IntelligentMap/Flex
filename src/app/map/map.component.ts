@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import * as Cartographer from 'cartographerjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import * as Cartographer from 'cartographerjs/src/Cartographer';
 
 @Component({
   selector: 'app-map',
@@ -53,8 +53,8 @@ export class MapComponent implements OnInit, OnDestroy {
           lng = parseFloat(localStorage.getItem('app-map-state-lng'));
         }
 
-        if(!(localStorage.getItem('app-map-state-zoom') == null)) {
-          zoom = parseInt(localStorage.getItem('app-map-state-zoom'));
+        if (!(localStorage.getItem('app-map-state-zoom') == null)) {
+          zoom = parseInt(localStorage.getItem('app-map-state-zoom'), 10);
         }
       }
     });
