@@ -1,4 +1,3 @@
 [submodule "src/Cartographer"]
 	path = src/Cartographer
-	url = https://git.oopscommand.com/intelligentmap/cartographer.git
-	branch = master
+	url = https://git.oopscommand.com/intelligentmap/cartographer-team/cartographer.git/
